@@ -2,13 +2,23 @@ package com.br.internet.entites;
 
 import java.io.Serializable;
 
-public class Clientes implements Serializable{
-	
-	
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Clientes implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private Boolean ativo;
@@ -25,9 +35,25 @@ public class Clientes implements Serializable{
 	private String dataAtivacao;
 	private String rg;
 	private String cpf;
+
+	@ManyToOne
+	@JoinColumn(name = "id_provedor")
+	private Provedor provedor;
+
+	@ManyToOne
+	@JoinColumn(name = "id_parceiro")
+	private Parceiro parceiro;
+
+	@ManyToOne
+	@JoinColumn(name = "id_condominio")
+	private Condominio condominio;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_pacote_conexao")
+	private PacoteConexao pacoteConexao;
+
 	public Clientes() {
-		
+
 	}
 
 	public Clientes(Long id, String nome, Boolean ativo, String endereco, String bairro, String complemento, String cep,
@@ -204,9 +230,5 @@ public class Clientes implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
-	
 
 }

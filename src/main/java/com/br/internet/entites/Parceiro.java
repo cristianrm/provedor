@@ -2,13 +2,25 @@ package com.br.internet.entites;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Parceiro implements Serializable {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idParceiro;
 	private String paceiro;
 	private String cidade;
@@ -22,6 +34,9 @@ public class Parceiro implements Serializable {
 	private String site;
 	private Instant data_ini_parceria;
 	private Instant data_fim_parceria;
+	
+	@OneToMany(mappedBy = "parceiro")
+	private List<Clientes> clientes = new ArrayList<>();
 	
 	public Parceiro() {
 		

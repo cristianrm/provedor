@@ -1,13 +1,25 @@
 package com.br.internet.entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Provedor implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProvedor;
 	private String provedor;
 	private String endereco; 
@@ -20,6 +32,9 @@ public class Provedor implements Serializable{
 	private String email;
 	private String responsavel;
 	private String site;
+	
+	@OneToMany(mappedBy = "provedor")
+	private List<Clientes> clientes = new ArrayList<>();
 	
 	public Provedor() {
 		
@@ -136,6 +151,10 @@ public class Provedor implements Serializable{
 
 	public void setSite(String site) {
 		this.site = site;
+	}
+	
+	public List<Clientes> getClientes() {
+		return clientes;
 	}
 
 	@Override

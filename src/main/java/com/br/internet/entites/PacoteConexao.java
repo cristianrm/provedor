@@ -1,15 +1,32 @@
 package com.br.internet.entites;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "pacote_conexao")
 public class PacoteConexao {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String idPacoteConexao;
 	private String nomePacote;
 	private Double valorPacote;
 	private String taxaUpload;
 	private String tavaDownload;
-	
+
+	@OneToMany(mappedBy = "pacoteConexao")
+	public List<Clientes> clientes = new ArrayList<>();
+
 	public PacoteConexao() {
-		
+
 	}
 
 	public PacoteConexao(String idPacoteConexao, String nomePacote, Double valorPacote, String taxaUpload,
@@ -86,7 +103,5 @@ public class PacoteConexao {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }
