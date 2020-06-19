@@ -1,16 +1,16 @@
 package com.br.internet.entites;
 
 import java.io.Serializable;
+import java.time.Instant;
 
-public class Provedor implements Serializable{
+public class Parceiro implements Serializable {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Long idProvedor;
-	private String provedor;
-	private String endereco; 
+	private Long idParceiro;
+	private String paceiro;
 	private String cidade;
 	private String estado;
 	private String cnpj;
@@ -20,17 +20,19 @@ public class Provedor implements Serializable{
 	private String email;
 	private String responsavel;
 	private String site;
+	private Instant data_ini_parceria;
+	private Instant data_fim_parceria;
 	
-	public Provedor() {
+	public Parceiro() {
 		
 	}
 
-	public Provedor(Long idProvedor, String provedor, String endereco, String cidade, String estado, String cnpj,
-			String cpf, String telefone, String celular, String email, String responsavel, String site) {
+	public Parceiro(Long idParceiro, String paceiro, String cidade, String estado, String cnpj, String cpf,
+			String telefone, String celular, String email, String responsavel, String site, Instant data_ini_parceria,
+			Instant data_fim_parceria) {
 		super();
-		this.idProvedor = idProvedor;
-		this.provedor = provedor;
-		this.endereco = endereco;
+		this.idParceiro = idParceiro;
+		this.paceiro = paceiro;
 		this.cidade = cidade;
 		this.estado = estado;
 		this.cnpj = cnpj;
@@ -40,30 +42,24 @@ public class Provedor implements Serializable{
 		this.email = email;
 		this.responsavel = responsavel;
 		this.site = site;
+		this.data_ini_parceria = data_ini_parceria;
+		this.data_fim_parceria = data_fim_parceria;
 	}
 
-	public Long getIdProvedor() {
-		return idProvedor;
+	public Long getidParceiro() {
+		return idParceiro;
 	}
 
-	public void setIdProvedor(Long idProvedor) {
-		this.idProvedor = idProvedor;
+	public void setidParceiro(Long idParceiro) {
+		this.idParceiro = idParceiro;
 	}
 
-	public String getProvedor() {
-		return provedor;
+	public String getPaceiro() {
+		return paceiro;
 	}
 
-	public void setProvedor(String provedor) {
-		this.provedor = provedor;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setPaceiro(String paceiro) {
+		this.paceiro = paceiro;
 	}
 
 	public String getCidade() {
@@ -138,11 +134,27 @@ public class Provedor implements Serializable{
 		this.site = site;
 	}
 
+	public Instant getData_ini_parceria() {
+		return data_ini_parceria;
+	}
+
+	public void setData_ini_parceria(Instant data_ini_parceria) {
+		this.data_ini_parceria = data_ini_parceria;
+	}
+
+	public Instant getData_fim_parceria() {
+		return data_fim_parceria;
+	}
+
+	public void setData_fim_parceria(Instant data_fim_parceria) {
+		this.data_fim_parceria = data_fim_parceria;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idProvedor == null) ? 0 : idProvedor.hashCode());
+		result = prime * result + ((idParceiro == null) ? 0 : idParceiro.hashCode());
 		return result;
 	}
 
@@ -154,14 +166,17 @@ public class Provedor implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Provedor other = (Provedor) obj;
-		if (idProvedor == null) {
-			if (other.idProvedor != null)
+		Parceiro other = (Parceiro) obj;
+		if (idParceiro == null) {
+			if (other.idParceiro != null)
 				return false;
-		} else if (!idProvedor.equals(other.idProvedor))
+		} else if (!idParceiro.equals(other.idParceiro))
 			return false;
 		return true;
 	}
+	
+	
+	
 	
 	
 
