@@ -56,9 +56,12 @@ public class Clientes implements Serializable {
 
 	}
 
+	
+
 	public Clientes(Long id, String nome, Boolean ativo, String endereco, String bairro, String complemento, String cep,
 			String cidade, String data_nascimento, String sexo, String telefone1, String telefone2, String email,
-			String dataAtivacao, String rg, String cpf) {
+			String dataAtivacao, String rg, String cpf, Provedor provedor, Parceiro parceiro, Condominio condominio,
+			PacoteConexao pacoteConexao) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -76,8 +79,13 @@ public class Clientes implements Serializable {
 		this.dataAtivacao = dataAtivacao;
 		this.rg = rg;
 		this.cpf = cpf;
+		this.provedor = provedor;
+		this.parceiro = parceiro;
+		this.condominio = condominio;
+		this.pacoteConexao = pacoteConexao;
 	}
-
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -205,6 +213,56 @@ public class Clientes implements Serializable {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
+	
+
+	public Provedor getProvedor() {
+		return provedor;
+	}
+
+
+
+	public void setProvedor(Provedor provedor) {
+		this.provedor = provedor;
+	}
+
+
+
+	public Parceiro getParceiro() {
+		return parceiro;
+	}
+
+
+
+	public void setParceiro(Parceiro parceiro) {
+		this.parceiro = parceiro;
+	}
+
+
+
+	public Condominio getCondominio() {
+		return condominio;
+	}
+
+
+
+	public void setCondominio(Condominio condominio) {
+		this.condominio = condominio;
+	}
+
+
+
+	public PacoteConexao getPacoteConexao() {
+		return pacoteConexao;
+	}
+
+
+
+	public void setPacoteConexao(PacoteConexao pacoteConexao) {
+		this.pacoteConexao = pacoteConexao;
+	}
+
+
 
 	@Override
 	public int hashCode() {
