@@ -27,5 +27,26 @@ public class ClienteService {
 		return obj.get();
 		
 	}
+	
+	public Clientes insert(Clientes cliente) {
+		return clienteRepository.save(cliente);
+	}
+	
+	public void delete(Long id) {
+		clienteRepository.deleteById(id);
+	}
+	
+	public Clientes update (Long id, Clientes obj ) {
+		Clientes entity = clienteRepository.getOne(id);
+		updateData(entity, obj);
+		return clienteRepository.save(entity);
+	}
+
+	private void updateData(Clientes entity, Clientes obj) {
+	  entity.setNome(obj.getNome());
+	  entity.setEndereco(obj.getEndereco());
+	  entity.setBairro(obj.getBairro());
+		
+	}
 
 }

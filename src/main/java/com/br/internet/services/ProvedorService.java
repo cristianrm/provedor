@@ -26,4 +26,25 @@ public class ProvedorService {
 
 	}
 
+	public Provedor insert(Provedor provedor) {
+		return provedorRepository.save(provedor);
+	}
+	
+	public void delete(Long id) {
+		provedorRepository.deleteById(id);
+	}
+	
+	public Provedor update (Long id, Provedor obj ) {
+		Provedor entity = provedorRepository.getOne(id);
+		updateData(entity, obj);
+		return provedorRepository.save(entity);
+	}
+
+	private void updateData(Provedor entity, Provedor obj) {
+	  entity.setResponsavel(obj.getResponsavel());
+	  entity.setEmail(obj.getEmail());
+		
+	}
+
+
 }

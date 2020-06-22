@@ -27,5 +27,26 @@ public class CondominioService {
 		return obj.get();
 		
 	}
+	
+	public Condominio insert(Condominio condominio) {
+		return condominioRepository.save(condominio);
+	}
+	
+	public void delete(Long id) {
+		condominioRepository.deleteById(id);
+	}
+	
+	public Condominio update (Long id, Condominio obj ) {
+		Condominio entity = condominioRepository.getOne(id);
+		updateData(entity, obj);
+		return condominioRepository.save(entity);
+	}
+
+	private void updateData(Condominio entity, Condominio obj) {
+	  entity.setNome(obj.getNome());
+	  entity.setCelular(obj.getCelular());
+	  entity.setBairro(obj.getBairro());
+		
+	}
 
 }

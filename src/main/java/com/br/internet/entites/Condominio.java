@@ -18,7 +18,7 @@ public class Condominio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_condominio;
+	private Long idCondominio;
 	private String nome;
 	private String bairro;
 	private String telefone;
@@ -35,7 +35,7 @@ public class Condominio {
 
 	public Condominio(Long id_condominio, String nome, String bairro, String telefone, String celular, String email) {
 		super();
-		this.id_condominio = id_condominio;
+		this.idCondominio = id_condominio;
 		this.nome = nome;
 		this.bairro = bairro;
 		this.telefone = telefone;
@@ -43,12 +43,12 @@ public class Condominio {
 		this.email = email;
 	}
 
-	public Long getId_condominio() {
-		return id_condominio;
+	public Long getIdCondominio() {
+		return idCondominio;
 	}
 
-	public void setId_condominio(Long id_condominio) {
-		this.id_condominio = id_condominio;
+	public void setIdCondominio(Long id_condominio) {
+		this.idCondominio = id_condominio;
 	}
 
 	public String getNome() {
@@ -99,7 +99,7 @@ public class Condominio {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id_condominio == null) ? 0 : id_condominio.hashCode());
+		result = prime * result + ((idCondominio == null) ? 0 : idCondominio.hashCode());
 		return result;
 	}
 
@@ -112,10 +112,10 @@ public class Condominio {
 		if (getClass() != obj.getClass())
 			return false;
 		Condominio other = (Condominio) obj;
-		if (id_condominio == null) {
-			if (other.id_condominio != null)
+		if (idCondominio == null) {
+			if (other.idCondominio != null)
 				return false;
-		} else if (!id_condominio.equals(other.id_condominio))
+		} else if (!idCondominio.equals(other.idCondominio))
 			return false;
 		return true;
 	}
