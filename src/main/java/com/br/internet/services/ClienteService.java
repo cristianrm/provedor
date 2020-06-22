@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.br.internet.entites.Clientes;
@@ -34,7 +35,13 @@ public class ClienteService {
 	}
 	
 	public void delete(Long id) {
-		clienteRepository.deleteById(id);
+		
+		try {
+			clienteRepository.deleteById(id);
+		}catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(id);
+		}
+		
 	}
 	
 	public Clientes update (Long id, Clientes obj ) {
