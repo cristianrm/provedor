@@ -3,6 +3,8 @@ package com.br.internet.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -30,8 +32,8 @@ public class ClienteService {
 		
 	}
 	
-	public Clientes insert(Clientes cliente) {
-		return clienteRepository.save(cliente);
+	public Clientes insert(Clientes obj) {
+		return clienteRepository.save(obj);
 	}
 	
 	public void delete(Long id) {
@@ -45,9 +47,14 @@ public class ClienteService {
 	}
 	
 	public Clientes update (Long id, Clientes obj ) {
-		Clientes entity = clienteRepository.getOne(id);
-		updateData(entity, obj);
-		return clienteRepository.save(entity);
+		try {
+			Clientes entity = clienteRepository.getOne(id);
+			updateData(entity, obj);
+			return clienteRepository.save(entity);
+		}catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
+		
 	}
 
 	private void updateData(Clientes entity, Clientes obj) {
